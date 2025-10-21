@@ -15,10 +15,7 @@ use WPSPCORE\Events\Contracts\ListenerContract;
  */
 class Dispatcher implements DispatcherContract {
 
-	/** @var array<string, array<int, callable|string>> */
 	private $listeners = [];
-
-	/** @var array<string, array<int, callable|string>> */
 	private $wildcards = [];
 
 	/*
@@ -135,9 +132,6 @@ class Dispatcher implements DispatcherContract {
 		return false;
 	}
 
-	/**
-	 * @return iterable<callable|array|string>
-	 */
 	private function getListenersForEvent($eventName) {
 		$list = $this->listeners[$eventName] ?? [];
 
@@ -156,14 +150,6 @@ class Dispatcher implements DispatcherContract {
 		return (bool)preg_match($regex, $event);
 	}
 
-	/**
-	 * Normalize event input (string or object)
-	 *
-	 * @param string|object $event
-	 * @param array         $payload
-	 *
-	 * @return array{0:string,1:array}
-	 */
 	private function normalizeEvent($event, $payload) {
 		if (is_object($event)) {
 			// Class-based event: use FQCN as name and inject object into payload under 'event'
@@ -174,13 +160,6 @@ class Dispatcher implements DispatcherContract {
 		return [$event, $payload];
 	}
 
-	/**
-	 * @param callable|array|string $listener
-	 * @param string                $eventName
-	 * @param array                 $payload
-	 *
-	 * @return mixed
-	 */
 	private function callListener($listener, $eventName, $payload) {
 		// Listener is reference: [object, method] or [FQCN, method] or closure or FQCN Listener
 		if (is_array($listener)) {

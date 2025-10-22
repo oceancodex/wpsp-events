@@ -47,7 +47,7 @@ class Dispatcher implements DispatcherContract {
 			$instance->subscribe($this);
 			return;
 		}
-		// Laravel compatibility style: array mapping
+		// Array mapping
 		if (property_exists($instance, 'listen') && is_array($instance->listen)) {
 			foreach ($instance->listen as $event => $handlers) {
 				foreach ((array)$handlers as $handler) {
@@ -100,7 +100,7 @@ class Dispatcher implements DispatcherContract {
 		$results = [];
 		foreach ($this->getListenersForEvent($name) as $listener) {
 			$result = $this->callListener($listener, $name, $objectPayload);
-			// Laravel behavior: if $halt => return first non-null result
+			// If $halt => return first non-null result
 			if ($halt && $result !== null) {
 				return $result;
 			}

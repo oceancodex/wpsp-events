@@ -15,7 +15,7 @@ interface ListenerContract {
 	public function handle($event, $payload = []);
 
 	/**
-	 * Indicates if this listener should be queued (simulate Laravel queueable).
+	 * Indicates if this listener should be queued.
 	 * Implementations may ignore or handle synchronously depending on project setup.
 	 */
 	public function shouldQueue(): bool;

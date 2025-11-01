@@ -153,7 +153,7 @@ class Dispatcher implements DispatcherContract {
 	private function normalizeEvent($event, $payload) {
 		if (is_object($event)) {
 			// Class-based event: use FQCN as name and inject object into payload under 'event'
-			$name    = $event::class;
+			$name    = get_class($event);
 			$payload = array_merge(['event' => $event], $payload);
 			return [$name, $payload];
 		}

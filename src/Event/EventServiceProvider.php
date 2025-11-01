@@ -2,7 +2,7 @@
 
 namespace WPSPCORE\Events\Event;
 
-final class EventServiceProvider {
+class EventServiceProvider {
 
 	public static function boot($map, $dispatcher) {
 		foreach ($map as $event => $listeners) {

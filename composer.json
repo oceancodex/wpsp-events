@@ -6,7 +6,8 @@
 	],
 	"license": "MIT",
 	"require": {
-		"php": "^8.0"
+		"php": "^8.0",
+		"illuminate/events": "^v8.83.27"
 	},
 	"config": {
 		"sort-packages": true
